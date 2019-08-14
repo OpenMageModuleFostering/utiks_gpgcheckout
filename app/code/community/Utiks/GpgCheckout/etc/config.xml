@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Utiks_GpgCheckout>
-            <version>0.1.1</version>
+            <version>0.1.0</version>
         </Utiks_GpgCheckout>
     </modules>
     <global>
@@ -26,6 +26,19 @@
             </utiks_gpgcheckout>
         </helpers>
     </global>
+    <default>
+        <payment>
+            <gpgcheckout>
+                <model>utiks_gpgcheckout/paymentMethod</model>
+                <active>1</active>
+                <order_status>pending</order_status>
+                <title>GPG Checkout payment</title>
+                <payment_action>authorize</payment_action>
+                <allowspecific>0</allowspecific>
+                <sort_order>1</sort_order>
+            </gpgcheckout>
+        </payment>
+    </default>
     <frontend>
         <routers>
             <gpgcheckout>
@@ -43,39 +56,5 @@
                 </utiks_gpgcheckout>
             </updates>
         </layout>
-        <translate>
-            <modules>
-                <Utiks_GpgCheckout>
-                    <files>
-                        <default>Utiks_GpgCheckout.csv</default>
-                    </files>
-                </Utiks_GpgCheckout>
-            </modules>
-        </translate>
     </frontend>
-    <adminhtml>
-        <translate>
-            <modules>
-                <Utiks_GpgCheckout>
-                    <files>
-                        <default>Utiks_GpgCheckout.csv</default>
-                    </files>
-                </Utiks_GpgCheckout>
-            </modules>
-        </translate>
-    </adminhtml>
-    <default>
-        <payment>
-            <gpgcheckout>
-                <model>utiks_gpgcheckout/paymentMethod</model>
-                <payment_action>authorize</payment_action>
-                <title>GPG Checkout Payment</title>
-                <order_status>processing</order_status>
-                <default_currency>TND</default_currency>
-                <mode>test</mode>
-                <submit_url_test><![CDATA[https://preprod.gpgcheckout.com/Paiement_test/Validation_paiement.php]]></submit_url_test>
-                <submit_url_production><![CDATA[https://www.gpgcheckout.com/Paiement/Validation_paiement.php]]></submit_url_production>
-            </gpgcheckout>
-        </payment>
-    </default>
 </config>

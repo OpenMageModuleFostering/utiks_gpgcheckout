@@ -3,9 +3,9 @@
  * @category  Utiks
  * @package   Utiks_GpgCheckout
  * @copyright Copyright (c) 2015 utiks (http://www.utiks.com)
+ * @author    Anis Hidouri <anis@utiks.com>
  */
 ?>
-<?php $_helper = Mage::helper('utiks_gpgcheckout'); ?>
 <style>
     .gpg-state-ok, .gpg-ko-state {
         width: 15px;
@@ -13,9 +13,10 @@
         margin-left: 5px;
     }
 </style>
-<div><img src="<?php echo $_helper->getGpgCheckoutLogo(); ?>"/></div>
+<div><img src="<?php echo Mage::helper('utiks_gpgcheckout')->getGpgCheckoutLogo(); ?>"/></div>
 <div class="gpg-checkout-payment-info">
     <?php echo $this->escapeHtml($this->getMethod()->getTitle()) ?>
+
     <?php if ($_additionalInfo = $this->renderAdditionalPaymentData()):; ?>       
         <table>
             <tr>
@@ -30,12 +31,12 @@
                         if (!is_array($value)) {
                             echo $value;
                         } elseif (is_array($value) && $value['state'] == true) {
-                            echo $value['value'] . '<img class="gpg-ko-state" src="' . $_helper->getGpgState() . 'gpg-ok-state.png"/>';
+                            echo $value['value'] . '<img class="gpg-ko-state" src="' . Mage::helper('utiks_gpgcheckout')->getGpgState() . 'gpg-ok-state.png"/>';
                         } elseif (is_array($value) && $value['state'] == false) {
                             if ($value == '02') {
-                                echo $value['value'] . '<span>'.$_helper->__('fraud detection due to unverified signature').'</span><img class="gpg-ko-state" src="' . $_helper->getGpgState() . 'gpg-ko-state.png"/>';
+                                echo $value['value'] . '<span>fraud detection due to unverified signature</span><img class="gpg-ko-state" src="' . Mage::helper('utiks_gpgcheckout')->getGpgState() . 'gpg-ko-state.png"/>';
                             } else {
-                                echo $value['value'] . '<img class="gpg-ko-state" src="' . $_helper->getGpgState() . 'gpg-ko-state.png"/>';
+                                echo $value['value'] . '<img class="gpg-ko-state" src="' . Mage::helper('utiks_gpgcheckout')->getGpgState() . 'gpg-ko-state.png"/>';
                             }
                         }
                         ?></td>
@@ -45,9 +46,10 @@
         </table>
     <?php else: ?>
         <div class="notice-msg" style="padding: 9px 30px; margin-top: 3px">
-            <?php echo $_helper->__('GPG Checkout payment error, please check details for more information.'); ?>
+            <?php echo 'GPG Checkout payment error, please check details for more information.' ?>
         </div>
     <?php endif; ?>
 
     <?php echo $this->getChildHtml() ?>
 </div>
+

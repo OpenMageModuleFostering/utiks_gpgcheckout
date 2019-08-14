@@ -2,18 +2,7 @@
 <layout>
     <default>
         <reference name="head">
-            <action method="addItem">
-                <type>skin_css</type>
-                <name>css/gpgcheckout/loading.css</name>
-            </action>
+            <action method="addItem"><type>skin_css</type><name>css/gpgcheckout/loading.css</name></action>
         </reference>
     </default>
-    <gpgcheckout_payment_redirect>
-        <reference name="root">
-            <action method="setTemplate"><template>page/1column.phtml</template></action>
-        </reference>
-        <reference name="content">
-            <block type="core/template" name="gpgcheckout" template="gpgcheckout/redirect.phtml"/>
-        </reference>
-    </gpgcheckout_payment_redirect>
 </layout>

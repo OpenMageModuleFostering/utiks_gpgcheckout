@@ -3,6 +3,7 @@
  * @category  Utiks
  * @package   Utiks_GpgCheckout
  * @copyright Copyright (c) 2015 utiks (http://www.utiks.com)
+ * @author    Anis Hidouri <anis@utiks.com>
  */
 ?>
 <?php
@@ -11,15 +12,16 @@ $orderId        = $helper->getOrderId();
 $orderData      = $helper->getOrderData($orderId);
 $numSite        = $helper->getStoreConfigByName('num_site');
 $password       = $helper->getStoreConfigByName('gpg_password');
-$amount         = (float) $orderData['orderAmount'] * 1000;
+$amount         = $orderData['orderAmount'];
 $devise         = $orderData['OrderDevice'];
 $orderProducts  = $orderData['OrderItems'];
 $language       = Mage::app()->getLocale()->getLocaleCode();
 $signture       = sha1($numSite . $password . $orderId . $amount . $devise);
 $customerData   = $helper->getOrderCustomerData($orderId);
 ?>
-<div class="gpg_redirect_title"><?php echo $this->__('Please wait while you are redirected to GPG Checkout payment server ...'); ?></div>
-<form id="gpg-payment-form" name="gpg_payment_form" method="post" action="<?php echo $helper->getGpgSubmitUrl(); ?>">
+<div class='gpg_redirect_title'><h1>GPG Checkout Redirect...</h1></div>
+<div class="ball"></div>
+<form name="paiment" method="POST" action="<?php echo $helper->getStoreConfigByName('submit_url'); ?>">
     <input type="hidden" name="NumSite" value="<?php echo $numSite; ?>"><br/><br/>
     <input type="hidden" name="Password" value="<?php echo md5($password); ?>"><br/><br/>
     <input type="hidden" name="orderID" value="<?php echo $orderId; ?>"><br/><br/>
@@ -49,7 +51,5 @@ $customerData   = $helper->getOrderCustomerData($orderId);
     <input type="hidden" name="Reccu_Frecuency "  value=" <?php echo $helper->getStoreConfigByName('reccu_frecuency'); ?>"><br/><br/>
 </form>
 <script type="text/javascript">
-    document.observe('dom:loaded', function(){
-        document.gpg_payment_form.submit();
-    });
+    document.paiment.submit();
 </script>

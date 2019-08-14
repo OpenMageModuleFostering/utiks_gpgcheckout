@@ -1,10 +1,27 @@
 <?php
+
+/**
+ * Gpg Checkout Payment method Info block
+ *
+ * * PHP version 5.5
+ *
+ * @category  Utiks
+ * @package   Utiks_GpgCheckout
+ * @author    Anis Hidouri <anis@utiks.com>
+ * @copyright 2015-2016 Copyright (c) utiks (http://www.utiks.com)
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU General Public License
+ * @link      http://www.utiks.com
+ */
+
 /**
  * Class Utiks_GpgCheckout_Block_Info_GpgCheckout
  *
  * @category  Utiks
  * @package   Utiks_GpgCheckout
+ * @author    Anis Hidouri <anis@utiks.com>
  * @copyright 2015-2016 Copyright (c) utiks (http://www.utiks.com)
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU General Public License
+ * @link      http://www.utiks.com
  */
 class Utiks_GpgCheckout_Block_Info_GpgCheckout extends Mage_Payment_Block_Info
 {
@@ -43,7 +60,7 @@ class Utiks_GpgCheckout_Block_Info_GpgCheckout extends Mage_Payment_Block_Info
         $transport = array(
             $paymentHelper->__('Transaction number') => $data['gpg_transaction'],
             $paymentHelper->__('Transaction Status') => $data['transactionStatus'],
-            $paymentHelper->__('Payment Type')       => $data['paymentType'],
+            $paymentHelper->__('Payment Type') => $data['paymentType'],
             $paymentHelper->__('Authorization code') => $data['authorizationCode'],
         );
         

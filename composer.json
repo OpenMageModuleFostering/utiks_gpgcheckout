@@ -1,12 +1,12 @@
 {
     "name": "OpenMageModuleFostering/Utiks_GpgCheckout",
     "type": "magento-module",
-    "license": "Open-Software-License",
+    "license": "Open-software-License",
     "homepage": "",
     "description": "Magento External Payment Extension for GPGCheckout Gateway in Tunisia",
     "authors": [
     {
-        "name": "Utiks",
+        "name": "utiks",
         "email": "contact@utiks.com"
     }
 ],
