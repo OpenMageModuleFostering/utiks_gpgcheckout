@@ -1,0 +1,185 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <payment>
+            <groups>
+                <gpgcheckout translate="label" module="utiks_gpgcheckout">
+                    <label>GPGCheckout Payment</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>60</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+                        <order_status translate="label">
+                            <label>New order status</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_order_status</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status>
+                        <num_site translate="label">
+                            <label>NumSite</label>
+                            <comment>Given by GPG</comment>
+                            <frontend_type>password</frontend_type>
+                            <sort_order>56</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </num_site>
+                        <gpg_password translate="label">
+                            <label>Password</label>
+                            <comment>Given by GPG</comment>
+                            <frontend_type>password</frontend_type>
+                            <sort_order>57</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </gpg_password>
+                        <vad_number translate="label">
+                            <label>VAD code</label>
+                            <comment>Given by GPG</comment>
+                            <frontend_type>password</frontend_type>
+                            <sort_order>58</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </vad_number>
+                        <default_currency translate="label">
+                            <label>Default currency</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_currency</source_model>
+                            <sort_order>59</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </default_currency>
+                        <terminal translate="label">
+                            <label>Terminal identification</label>
+                            <comment>Given byGPG</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </terminal>
+                        <mode translate="label">
+                            <label>Mode</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>utiks_gpgcheckout/system_config_source_gatewayUrls</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </mode>
+                        <submit_url_test translate="label comment">
+                            <label>Gateway Test Url</label>
+                            <comment>Given by GPG</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>71</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </submit_url_test>
+                        <submit_url_production translate="label comment">
+                            <label>Gateway Production Url</label>
+                            <comment>Given by GPG</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>72</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                        </submit_url_production>
+                        <payment_type translate="label">
+                            <label>Payment type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>utiks_gpgcheckout/system_config_source_paymentType</source_model>
+                            <sort_order>92</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </payment_type>
+                        <reccu_num translate="label">
+                            <label>Number of recurrence</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>93</sort_order>
+                            <source_model>utiks_gpgcheckout/system_config_source_ReccuNumber</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <payment_type separator="|">
+                                    <value>2|6</value>
+                                </payment_type>
+                            </depends>
+                        </reccu_num>
+                        <reccu_frecuency translate="label">
+                            <label>Recurrence frequency</label>
+                            <comment>Recurrence frequency in days</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>94</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                            <depends>
+                                <payment_type>
+                                    <value>2</value>
+                                </payment_type>
+                            </depends>
+                        </reccu_frecuency>
+                        <reccu_expiryDate translate="label">
+                            <label>Recurrence expiry date</label>
+                            <comment>Expiry date formatted by aaaa-MM-jj</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>94</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <payment_type separator="|">
+                                    <value>2|3</value>
+                                </payment_type>
+                            </depends>
+                        </reccu_expiryDate>
+                        <logs translate="label">
+                            <label>Enable log</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>95</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </logs>
+                    </fields>
+                </gpgcheckout>
+            </groups>
+        </payment>
+
+    </sections>
+</config>

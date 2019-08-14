@@ -1,0 +1,55 @@
+<?php
+/**
+ * @category  Utiks
+ * @package   Utiks_GpgCheckout
+ * @copyright Copyright (c) 2015 utiks (http://www.utiks.com)
+ */
+?>
+<?php
+$helper         = Mage::helper('utiks_gpgcheckout');
+$orderId        = $helper->getOrderId();
+$orderData      = $helper->getOrderData($orderId);
+$numSite        = $helper->getStoreConfigByName('num_site');
+$password       = $helper->getStoreConfigByName('gpg_password');
+$amount         = (float) $orderData['orderAmount'] * 1000;
+$devise         = $orderData['OrderDevice'];
+$orderProducts  = $orderData['OrderItems'];
+$language       = Mage::app()->getLocale()->getLocaleCode();
+$signture       = sha1($numSite . $password . $orderId . $amount . $devise);
+$customerData   = $helper->getOrderCustomerData($orderId);
+?>
+<div class="gpg_redirect_title"><?php echo $this->__('Please wait while you are redirected to GPG Checkout payment server ...'); ?></div>
+<form id="gpg-payment-form" name="gpg_payment_form" method="post" action="<?php echo $helper->getGpgSubmitUrl(); ?>">
+    <input type="hidden" name="NumSite" value="<?php echo $numSite; ?>"><br/><br/>
+    <input type="hidden" name="Password" value="<?php echo md5($password); ?>"><br/><br/>
+    <input type="hidden" name="orderID" value="<?php echo $orderId; ?>"><br/><br/>
+    <input type="hidden" name="Amount" value="<?php echo $amount; ?>"><br/><br/>
+    <input type="hidden" name="Currency" value="<?php echo $devise; ?>"><br/><br/>
+    <input type="hidden" name="Language" value="<?php echo $language; ?>"><br/><br/>
+    <input type="hidden" name="EMAIL" value="<?php echo $customerData['email']; ?>"><br/><br/>
+    <input type="hidden" name="CustLastName" value="<?php echo $customerData['lastname']; ?>"><br/><br/>
+    <input type="hidden" name="CustFirstName" value="<?php echo $customerData['firstname']; ?>"><br/><br/>
+    <input type="hidden" name="CustAddress" value="<?php echo $customerData['city'] . ',' . $customerData['street'] . ',' . $customerData['postcode']; ?>"><br/><br/>
+    <input type="hidden" name="CustZIP" value="<?php echo $customerData['postcode']; ?>"><br/><br/>
+    <input type="hidden" name="CustCity" value="<?php echo $customerData['city']; ?>"><br/><br/>
+    <input type="hidden" name="CustCountry" value="<?php echo $customerData['country_id']; ?>"><br/><br/>
+    <input type="hidden" name="CustTel" value="<?php echo $customerData['telephone']; ?>"><br/><br/>
+    <input type="hidden" name="PayementType" value="<?php echo $helper->getStoreConfigByName('payment_type'); ?>"><br/><br/>
+    <input type="hidden" name="MerchandSession" value=""><br/><br/>
+    <input type="hidden" name="orderProducts" value="<?php echo $orderProducts ?>"><br/><br/>
+    <input type="hidden" name="signature" value="<?php echo $signture; ?>"><br/><br/>
+    <input type="hidden" name="AmountSecond" value=""><br/><br/>
+    <input type="hidden" name="vad" value="<?php echo $helper->getStoreConfigByName('vad_number'); ?>"><br/><br/>
+    <input type="hidden" name="Terminal" value="<?php echo $helper->getStoreConfigByName('terminal'); ?>"><br/><br/>
+    <input type="hidden" name="TauxConversion" value=" "><br/><br/>
+    <input type="hidden" name="BatchNumber" value=" "><br/><br/>
+    <input type="hidden" name="MerchantReference" value=" "><br/><br/>
+    <input type="hidden" name="Reccu_Num" value="<?php echo $helper->getStoreConfigByName('reccu_num'); ?>"><br/><br/>
+    <input type="hidden" name="Reccu_ExpiryDate " value="<?php echo $helper->getStoreConfigByName('reccu_expiryDate'); ?>"><br/><br/>
+    <input type="hidden" name="Reccu_Frecuency "  value=" <?php echo $helper->getStoreConfigByName('reccu_frecuency'); ?>"><br/><br/>
+</form>
+<script type="text/javascript">
+    document.observe('dom:loaded', function(){
+        document.gpg_payment_form.submit();
+    });
+</script>
