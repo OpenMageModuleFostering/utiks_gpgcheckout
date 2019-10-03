@@ -1,7 +1,7 @@
 {
-    "name": "OpenMageModuleFostering\/Utiks_GpgCheckout",
+    "name": "openmage-module-fostering\/utiks_gpgcheckout",
     "type": "magento-module",
-    "license": "Open-software-License",
+    "license": "OSL-3.0",
     "homepage": "",
     "description": "Magento External Payment Extension for GPGCheckout Gateway in Tunisia",
     "authors": [
